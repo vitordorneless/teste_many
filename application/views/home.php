@@ -10,30 +10,30 @@
     <body>        
         <div class="container">
             <br><br><br><br>
-            <p class="text-center">Desafio <strong>Vítor Dorneles</strong></p>
-            <p class="text-center"><?= validation_errors(); ?></p>
-            <?= form_open('form'); ?>
-            <div class="col-md-4 col-md-offset-4">
-                <div class="form-group">                
-                    <input type="text" class="form-control" name="user" id="user" placeholder="Usuário" autofocus="autofocus" required>
-                </div>
-                <div class="form-group">                
-                    <input type="password" class="form-control" name="pass" id="pass" placeholder="********" required>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-success btn-block">LOGIN</button>
+            <p class="text-center">Desafio <strong>Vítor Dorneles</strong></p>            
+            <form id='login_form' name="login_form" method="post">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="form-group">                
+                        <input type="text" class="form-control" name="user" id="user" placeholder="Usuário" autofocus="autofocus" required>
+                    </div>
+                    <div class="form-group">                
+                        <input type="password" class="form-control" name="pass" id="pass" placeholder="********" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-success btn-block">LOGIN</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12" id="conteudo"></div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
-    <script src="<?= base_url(); ?>public/js/jquery-1.11.1.min.js"></script>
-    <script src="<?= base_url(); ?>public/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            //alert('oi');
-        });
-    </script>
-</body>
+            </form>
+        </div>
+        <script src="<?= base_url(); ?>public/js/jquery-1.11.1.min.js"></script>
+        <script src="<?= base_url(); ?>public/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?= base_url(); ?>public/js/login/login.js"></script>
+        <script src="<?= base_url(); ?>public/js/util/util.js"></script>
+        <script src="<?= base_url(); ?>public/js/util/sweetalert2.all.min.js"></script>
+    </body>
 </html>
