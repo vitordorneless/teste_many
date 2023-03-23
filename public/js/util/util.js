@@ -8,9 +8,3 @@ function alerta(icon = "", title = "", text = "") {
         timer: 1800
     });
 }
-
-/*exemplo alerta
- * alerta('success', 'Sucesso', 'Dados Salvos!!');
-   
-                        alerta('error', 'Aconteceu um erro!', 'Tente Novamente!!');
- */
