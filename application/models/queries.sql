@@ -24,3 +24,6 @@ ALTER TABLE `many_colaborador`
 
 ALTER TABLE `many_colaborador`
 	CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT FIRST;
+
+ALTER TABLE `many_colaborador`
+	CHANGE COLUMN `fornecedor` `estado_civil` INT(11) NOT NULL AFTER `genero`;

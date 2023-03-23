@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Minds extends CI_Controller {
+class Colaborador extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -10,7 +10,7 @@ class Minds extends CI_Controller {
     }
 
     public function index() {
-        $this->template->show('dash.php');        
+        $this->template->show('colaborador.php');        
     }
 
 }
