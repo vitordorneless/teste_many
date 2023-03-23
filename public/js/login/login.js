@@ -14,7 +14,12 @@ $(function () {
                 if (json['status'] === 1) {
                     alerta('success', 'Sucesso', 'Direcionando!!');
                     window.location = BASE_URL + 'minds';
-                } else {
+                } 
+                if (json['status'] === 2) {
+                    alerta('info', 'Bloqueado por 30 minutos', 'Direcionando!!');
+                    $("#login_form").reset();
+                }                
+                else {
                     alerta('error', 'Erro nos dados', 'Já tentou ' + json['tentar_logar']);
                     $("#login_form").reset();
                 }
