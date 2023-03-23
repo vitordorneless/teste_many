@@ -19,14 +19,31 @@ class Many_Colaborador_model extends CI_Model {
         $result = $this->db->get();
         return $result->num_rows() > 0 ? 1 : 0;
     }
-    
+
     public function get_data() {
         $this->db
                 ->select('id,nome,login,CPF,status')
                 ->from('many_colaborador')
-                ->order_by('nome','ASC');        
+                ->order_by('nome', 'ASC');
 
         return $this->db->get()->result();
+    }
+
+    public function get_data_only($id) {
+        $this->db
+                ->from('many_colaborador')
+                ->where('id', $id)
+                ->order_by('nome', 'ASC');
+        return $this->db->get()->result();
+    }
+
+    public function insert($data) {
+        $this->db->insert('many_colaborador', $data);
+    }
+
+    public function update($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('many_colaborador', $data);
     }
 
 }

@@ -15,10 +15,10 @@
                         <div class="navbar-header">
                             <ul class="nav navbar-nav">
                                 <li><a href="<?= base_url(); ?>colaborador">Colaborador</a></li>
-                                <li><a href="<?= base_url(); ?>#">Fornecedor</a></li>
-                                <li><a href="<?= base_url(); ?>#">Permissões</a></li>
-                                <li><a href="<?= base_url(); ?>#">Produtos</a></li>            
-                                <li><a href="<?= base_url(); ?>#">Pedidos de Compras</a></li>            
+                                <li><a href="<?= base_url(); ?>fornecedor">Fornecedor</a></li>
+                                <li><a href="<?= base_url(); ?>permissoes">Permissões</a></li>
+                                <li><a href="<?= base_url(); ?>produtos">Produtos</a></li>            
+                                <li><a href="<?= base_url(); ?>compras">Pedidos de Compras</a></li>            
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->

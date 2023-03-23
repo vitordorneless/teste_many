@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <div class="row">
-            <li class="btn btn-default btn-success"><a href="<?= base_url(); ?>colaborador/resgate?id=0">Incluir Colaborador</a></li>
+            <li class="btn btn-default btn-success"><a href="<?= base_url(); ?>colaborador/redireciona?id=0">Incluir Colaborador</a></li>
         </div>        
         <div class="row">
             <table id="dt_colaboradores" name="dt_colaboradores" class="table table-striped table-bordered table-responsive text text-sm text-center">
