@@ -2,6 +2,8 @@
 </div>
 <script src="<?= base_url(); ?>public/js/jquery-1.11.1.min.js"></script>
 <script src="<?= base_url(); ?>public/js/jquery.validate.js"></script>
+<script src="<?= base_url(); ?>public/js/jquery.mask.min.js"></script>
+<script src="<?= base_url(); ?>public/js/jquery.maskMoney.min.js"></script>
 <script src="<?= base_url(); ?>public/bootstrap/js/bootstrap.min.js"></script>  
 <script src="<?= base_url(); ?>public/js/util/dataTables.bootstrap.min.js"></script>  
 <script src="<?= base_url(); ?>public/js/util/datatables.min.js"></script>  
