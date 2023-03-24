@@ -29,6 +29,16 @@ class Many_Produtos_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function get_data_active() {
+        $this->db
+                ->select('id,nome')
+                ->from('many_produtos')
+                ->where('status', 1)
+                ->order_by('nome', 'ASC');
+
+        return $this->db->get()->result();
+    }
+
     public function get_data_only($id) {
         $this->db
                 ->from('many_produtos')
