@@ -26,13 +26,7 @@ $(document).ready(function () {
 
     $("#pedido_compra").validate({
         messages: {
-            nome: {
-                required: 'Campo Obrigatório!!!'
-            },
-            unidade: {
-                required: 'Campo Obrigatório!!!'
-            },
-            valor_unitario: {
+            obs: {
                 required: 'Campo Obrigatório!!!'
             }
         },

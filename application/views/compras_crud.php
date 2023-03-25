@@ -5,11 +5,11 @@
             <div class='row'>
                 <div class="form-group">
                     <label for="label_nome">Pedido:</label>
-                    <input required="required" type="text" value="<?= $id_pedido == 0 ? '' : $id_pedido ?>" class="form-control" id="id_pedido" name="id_pedido">                            
+                    <input type="text" value="<?= $id_pedido == 0 ? '' : $id_pedido ?>" class="form-control" id="id_pedido" name="id_pedido" readonly="readonly">
                 </div>            
                 <div class="form-group">
                     <label for="agencia_label">Fornecedor:</label>
-                    <select class="form-control" id="id_fornecedor" name="id_fornecedor">
+                    <select class="form-control" id="id_fornecedor" name="id_fornecedor" autofocus="autofocus">
                         <?php
                         foreach ($fornecedor as $value) {
                             echo '<option value="' . $value->id . '">' . $value->nome . '</option>';
@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="label_nome">Obs:</label>
-                    <textarea cols="20" rows="5" class="form-control"></textarea>
+                    <textarea id="obs" name="obs" cols="20" rows="5" class="form-control"></textarea>
                 </div>  
             </div> 
             <div class="row">
@@ -65,12 +65,12 @@
                                 <select id="id_produto" name="id_produto[]" class="form-control">
                                     <?php
                                     foreach ($produtos as $value) {
-                                        echo '<option value="' . $value['id'] . '">' . $value['nome'] . '</option>';
+                                        echo '<option value="' . $value->id . '">' . $value->nome . '</option>';
                                     }
                                     ?>
                                 </select>
                             </td>                        
-                            <td><input type="text" id="quantidade" name="quantidade[]" class="form-control"></td>
+                            <td><input type="number" min="0" id="quantidade" name="quantidade[]" class="form-control"></td>
                             <td><input type="text" id="valor" name="valor[]" class="form-control"></td>                        
                         </tr>
                     </tbody>

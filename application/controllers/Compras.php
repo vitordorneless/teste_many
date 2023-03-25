@@ -49,14 +49,14 @@ class Compras extends CI_Controller {
         if ($this->session->userdata("ip")) {
             $this->load->model("Many_Fornecedor_model");
             $this->load->model("Many_Produtos_model");
-            $this->load->model("Many_Pedidos_Compra_model");            
+            $this->load->model("Many_Pedidos_Compra_model");
             $data = array(
                 "scripts" => array(
                     "compras/compras_crud.js"
-                ),                
-                "id_pedido" => bcadd(1000, (int)$this->Many_Pedidos_Compra_model->get_next_id(), 0),                                
+                ),
+                "id_pedido" => bcadd(1000, (int) $this->Many_Pedidos_Compra_model->get_next_id(), 0),
                 "fornecedor" => $this->Many_Fornecedor_model->get_data_active(),
-                "produtos" => $this->Many_Produtos_model->get_data_active()                
+                "produtos" => $this->Many_Produtos_model->get_data_active()
             );
             $this->template->show('compras_crud.php', $data);
         } else {
@@ -68,27 +68,28 @@ class Compras extends CI_Controller {
         if (!$this->input->is_ajax_request())
             exit('Nenhum acesso permitido');
 
-        $valor_unit = str_replace('.', '', $this->input->post("valor_unitario"));
-        $valor_unitario = str_replace(',', '.', $valor_unit);
-
-        $insert = array();
-        $insert['nome'] = $this->input->post("nome");
-        $insert['unidade'] = $this->input->post("unidade");
-        $insert['valor_unitario'] = $valor_unitario;
+        $insert = $insert_pedido = $pedido_insere = array();
+        $insert['id_pedido'] = $this->input->post("id_pedido");
         $insert['id_fornecedor'] = $this->input->post("id_fornecedor");
+        $insert['obs'] = $this->input->post("obs");
         $insert['status'] = $this->input->post("status");
-
-        unset($valor_unit);
-        unset($valor_unitario);
-
         $this->load->model("Many_Pedidos_Compra_model");
-        if ($this->input->post("incluir") === '1') {
-            $this->Many_Pedidos_Compra_model->insert($insert);
-            echo 'salvo';
-        } else {
-            $this->Many_Pedidos_Compra_model->update($this->input->post("id"), $insert);
-            echo 'salvo';
+        $this->load->model("Many_Itens_Pedido_Compra_model");
+        $this->Many_Pedidos_Compra_model->insert($insert);
+        $i = 0;
+
+        foreach ($this->input->post("id_produto") as $value) {
+            $insert_pedido['id_pedido'] = $insert['id_pedido'];
+            $insert_pedido['id_produto'] = $value[$i];
+            $insert_pedido['quantidade'] = $this->input->post("quantidade")[$i];
+            $valor_unit = str_replace('.', '', $this->input->post("valor"))[$i];
+            $valor_unitario = str_replace(',', '.', $valor_unit);
+            $insert_pedido['valor_unitario'] = $valor_unitario;
+            array_push($pedido_insere, $insert_pedido);
         }
+
+        $this->Many_Itens_Pedido_Compra_model->insert_a_lot($pedido_insere);
+        echo 'salvo';
     }
 
 }

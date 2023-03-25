@@ -30,8 +30,7 @@ class Many_Produtos_model extends CI_Model {
     }
 
     public function get_data_active() {
-        $this->db
-                ->select('id,nome')
+        $this->db                
                 ->from('many_produtos')
                 ->where('status', 1)
                 ->order_by('nome', 'ASC');
