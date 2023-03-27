@@ -1,18 +1,20 @@
 <div class="jumbotron">
-    <h2><strong>Incluir Pedido</strong></h2>                
+    <h2><strong>Editar Pedido</strong></h2>                
     <div class="modal-body">        
-        <form class="form-group" id="pedido_compra" name="pedido_compra" method="POST">
+        <form class="form-group" id="pedido_compra_edit" name="pedido_compra_edit" method="POST">
             <div class='row'>
                 <div class="form-group">
                     <label for="label_nome">Pedido:</label>
                     <input type="text" value="<?= $id_pedido ?>" class="form-control" id="id_pedido" name="id_pedido" readonly="readonly">
+                    <input type="hidden" value="<?= $id ?>" class="form-control" id="id" name="id">
                 </div>            
                 <div class="form-group">
                     <label for="agencia_label">Fornecedor:</label>
                     <select class="form-control" id="id_fornecedor" name="id_fornecedor" autofocus="autofocus">
                         <?php
                         foreach ($fornecedor as $value) {
-                            echo '<option value="' . $value->id . '">' . $value->nome . '</option>';
+                            $select = $value->id == $id ? 'selected' : '';
+                            echo '<option value="' . $value->id . '" ' . $select . '>' . $value->nome . '</option>';
                         }
                         ?>                                        
                     </select>                                   
@@ -39,17 +41,9 @@
                 </div>
                 <div class="form-group">
                     <label for="label_nome">Obs:</label>
-                    <textarea id="obs" name="obs" cols="20" rows="5" class="form-control"></textarea>
+                    <textarea id="obs" name="obs" cols="20" rows="5" class="form-control"><?= $obs ?></textarea>
                 </div>  
-            </div> 
-            <div class="row">
-                <div class="form-group">
-                    <label>Adicionar Linha ao pedido</label>
-                    <a href="#" class="btn btn-info addline">
-                        <i class="fa-adjust"></i>Inserir!!
-                    </a>
-                </div>
-            </div>
+            </div>             
             <div class="row">
                 <table id="dt_fechamento" name="dt_fechamento" class="table table-striped table-bordered table-responsive text text-sm text-center">
                     <thead>
@@ -57,22 +51,32 @@
                             <th>Produto</th>
                             <th>Quantidade</th>                        
                             <th>Valor Unitário</th>                        
+                            <th>Valor Total</th>                        
+                            <th>Editar</th>                        
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="theline">
-                            <td>
-                                <select id="id_produto" name="id_produto[]" class="form-control">
-                                    <?php
-                                    foreach ($produtos as $value) {
-                                        echo '<option value="' . $value->id . '">' . $value->nome . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </td>                        
-                            <td><input type="number" min="0" id="quantidade" name="quantidade[]" class="form-control"></td>
-                            <td><input type="text" id="valor" name="valor[]" class="form-control"></td>                        
-                        </tr>
+                        <?php
+                        foreach ($itens as $value) {
+                        echo '<tr>';    
+                        echo '<td>';    
+                        echo $value->nome;    
+                        echo '</td>';    
+                        echo '<td>';    
+                        echo $value->quantidade;    
+                        echo '</td>';    
+                        echo '<td>';    
+                        echo $value->valor_unitario;    
+                        echo '</td>';    
+                        echo '<td>';    
+                        echo 'R$' . ' ' . number_format(($value->valor_unitario*$value->quantidade), 2, ",", ".");    
+                        echo '</td>';    
+                        echo '<td>';    
+                        echo '<a class="btn btn-primary" href="' . base_url() . 'compras/redireciona_item?id=' . $value->id . '">Editar</a>';
+                        echo '</td>';    
+                        echo '</tr>';
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

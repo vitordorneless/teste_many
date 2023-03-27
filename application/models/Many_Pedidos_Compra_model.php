@@ -37,13 +37,20 @@ class Many_Pedidos_Compra_model extends CI_Model {
         return $this->db->get()->result();
     }
     
+    public function get_data_only_edit($id) {
+        $this->db
+                ->from('many_pedidos_compra')
+                ->where('id', $id)
+                ->order_by('id_pedido', 'ASC');
+        return $this->db->get();
+    }
+    
     public function get_next_id() {
         $this->db
-                ->select('if (MAX(id_pedido) <> NULL,MAX(id_pedido),0) as id_pedido')
-                ->from('many_pedidos_compra')
-                
+                ->select('MAX(id)+1001 as id_pedido')
+                ->from('many_pedidos_compra')                
                 ->order_by('id_pedido', 'ASC');
-        return $this->db->get()->result();
+        return $this->db->get();
     }
 
     public function insert($data) {
