@@ -15,6 +15,7 @@
                         <div class="navbar-header">
                             <ul class="nav navbar-nav">
                                 <li><a href="<?= base_url(); ?>colaborador">Colaborador</a></li>
+                                <li><a href="<?= base_url(); ?>endereco">Colaborador Endereço</a></li>
                                 <li><a href="<?= base_url(); ?>fornecedor">Fornecedor</a></li>
                                 <li><a href="<?= base_url(); ?>permissoes">Permissões</a></li>
                                 <li><a href="<?= base_url(); ?>produtos">Produtos</a></li>            

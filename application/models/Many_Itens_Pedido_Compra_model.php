@@ -41,12 +41,12 @@ class Many_Itens_Pedido_Compra_model extends CI_Model {
     
     public function get_data_only_item($id) {
         $this->db
-                ->select('many_itens_pedido_compra.quantidade, many_itens_pedido_compra.valor_unitario, many_itens_pedido_compra.id, many_produtos.nome')
+                ->select('many_itens_pedido_compra.id_pedido,many_itens_pedido_compra.quantidade, many_itens_pedido_compra.valor_unitario, many_itens_pedido_compra.id, many_produtos.nome')
                 ->from('many_itens_pedido_compra')
                 ->join('many_produtos', 'many_produtos.id = many_itens_pedido_compra.id_produto')
                 ->where('many_itens_pedido_compra.id', $id)
                 ->order_by('many_itens_pedido_compra.id', 'ASC');
-        return $this->db->get()->result();
+        return $this->db->get();
     }
 
     public function insert($data) {

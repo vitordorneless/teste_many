@@ -51,7 +51,7 @@ class Compras extends CI_Controller {
             
             $this->load->model("Many_Produtos_model");            
             $this->load->model("Many_Itens_Pedido_Compra_model");
-            $id_pedido = $this->Many_Itens_Pedido_Compra_model->get_data_only_edit($id)->result_array()[0];
+            $id_pedido = $this->Many_Itens_Pedido_Compra_model->get_data_only_item($id)->result_array()[0];
 
             $data = array(
                 "scripts" => array(
