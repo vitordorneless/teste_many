@@ -33,7 +33,7 @@ class Produtos extends CI_Controller {
             $row[] = $value->unidade;
             $row[] = 'R$' . ' ' . number_format($value->valor_unitario, 2, ",", ".");
             $row[] = $value->status == 1 ? 'Ativo' : 'Inativo';
-            $row[] = '<a class="btn btn-primary" href="' . base_url() . 'produtos/redireciona?id=' . $value->id . '">Editar</a>';
+            $row[] = $value->status == 1 ? '<a class="btn btn-primary" href="' . base_url() . 'produtos/redireciona?id=' . $value->id . '">Editar</a>' : '<strong>Não pode Alterar</strong>';
             $data[] = $row;
             ++$tt;
             ++$tb;

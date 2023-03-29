@@ -33,7 +33,7 @@ class Colaborador extends CI_Controller {
             $row[] = $value->login;
             $row[] = $value->CPF;
             $row[] = $value->status == 1 ? 'Ativo' : 'Inativo';
-            $row[] = '<a class="btn btn-primary" href="' . base_url() . 'colaborador/redireciona?id=' . $value->id . '">Editar</a>';
+            $row[] = $value->status == 1 ? '<a class="btn btn-primary" href="' . base_url() . 'colaborador/redireciona?id=' . $value->id . '">Editar</a>' : '<strong>Não pode Alterar</strong>';
             $data[] = $row;
             ++$tt;
             ++$tb;

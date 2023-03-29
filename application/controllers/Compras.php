@@ -32,7 +32,7 @@ class Compras extends CI_Controller {
             $row[] = $value->id_pedido;
             $row[] = $value->nome;
             $row[] = $value->status == 1 ? 'Ativo' : 'Inativo';
-            $row[] = '<a class="btn btn-primary" href="' . base_url() . 'compras/redireciona_pedido?id=' . $value->id . '">Editar</a>';
+            $row[] = $value->status == 3 ?? '<strong>Não pode alterar</strong>';
             $data[] = $row;
             ++$tt;
             ++$tb;

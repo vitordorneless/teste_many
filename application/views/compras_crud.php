@@ -24,9 +24,11 @@
                         if ($id_pedido <> 0) {
                             $seleciona111 = $status == '1' ? "selected" : " ";
                             $seleciona222 = $status == '0' ? "selected" : " ";
+                            $seleciona2223 = $status == '3' ? "selected" : " ";
                         } else {
                             $seleciona111 = " ";
                             $seleciona222 = " ";
+                            $seleciona2223 = " ";
                         }
                         ?>                    
                         <option value="1" <?php echo $seleciona111; ?>>
@@ -34,6 +36,9 @@
                         </option>
                         <option value="0" <?php echo $seleciona222; ?>>
                             Inativo
+                        </option>
+                        <option value="0" <?php echo $seleciona2223; ?>>
+                            Finalizado
                         </option>
                     </select>                                   
                 </div>
