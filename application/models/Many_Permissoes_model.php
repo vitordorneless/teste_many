@@ -12,7 +12,7 @@ class Many_Permissoes_model extends CI_Model {
 
     public function get_data() {
         $this->db
-                ->select('many_colaborador.nome,many_permissoes.colaborador,many_permissoes.endcolaborador,many_permissoes.fornecedor,many_permissoes.produtos,many_permissoes.compras')
+                ->select('many_colaborador.nome,many_permissoes.colaborador,many_permissoes.id,many_permissoes.endcolaborador,many_permissoes.fornecedor,many_permissoes.produtos,many_permissoes.compras')
                 ->from('many_permissoes')
                 ->join('many_colaborador', 'many_permissoes.id_many_colaborador = many_colaborador.id');
         return $this->db->get()->result();
@@ -22,6 +22,14 @@ class Many_Permissoes_model extends CI_Model {
         $this->db
                 ->from('many_permissoes')
                 ->where('id', $id)
+                ->order_by('id', 'ASC');
+        return $this->db->get()->result();
+    }
+    
+    public function get_data_only_user($id) {
+        $this->db
+                ->from('many_permissoes')
+                ->where('id_many_colaborador', $id)
                 ->order_by('id', 'ASC');
         return $this->db->get()->result();
     }

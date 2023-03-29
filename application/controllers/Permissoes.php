@@ -30,11 +30,11 @@ class Permissoes extends CI_Controller {
         foreach ($colaboradores as $value) {
             $row = array();
             $row[] = $value->nome;
-            $row[] = $value->colaborador == 1 ? '<i class="bi bi-check-lg"></i>' : '<i class="bi bi-sign-do-not-enter"></i>';
-            $row[] = $value->endcolaborador == 1 ? '<i class="bi bi-check-lg"></i>' : '<i class="bi bi-sign-do-not-enter"></i>';
-            $row[] = $value->fornecedor == 1 ? '<i class="bi bi-check-lg"></i>' : '<i class="bi bi-sign-do-not-enter"></i>';
-            $row[] = $value->produtos == 1 ? '<i class="bi bi-check-lg"></i>' : '<i class="bi bi-sign-do-not-enter"></i>';
-            $row[] = $value->compras == 1 ? '<i class="bi bi-check-lg"></i>' : '<i class="bi bi-sign-do-not-enter"></i>';
+            $row[] = $value->colaborador == 1 ? 'Sim' : 'Não';
+            $row[] = $value->endcolaborador == 1 ? 'Sim' : 'Não';
+            $row[] = $value->fornecedor == 1 ? 'Sim' : 'Não';
+            $row[] = $value->produtos == 1 ? 'Sim' : 'Não';
+            $row[] = $value->compras == 1 ? 'Sim' : 'Não';
             $row[] = '<a class="btn btn-primary" href="' . base_url() . 'permissoes/redireciona?id=' . $value->id . '">Editar</a>';
             $data[] = $row;
             ++$tt;

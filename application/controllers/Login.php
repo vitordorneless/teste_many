@@ -19,8 +19,8 @@ class Login extends CI_Controller {
         $login = $this->input->post("user");
         $pass = $this->input->post("pass");
         $this->session->set_userdata('ip', $this->pegar_ip());
-        $this->load->model("Many_Colaborador_model");
-        $result = $this->Many_Colaborador_model->login_data($login, md5(sha1($pass)));
+        $this->load->model("Many_Colaborador_model");        
+        $result = $this->Many_Colaborador_model->login_data($login, md5(sha1($pass)));        
 
         if ($result === 1) {
             if ($this->tentativas() >= 3) {

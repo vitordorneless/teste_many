@@ -28,6 +28,16 @@ class Many_Colaborador_model extends CI_Model {
 
         return $this->db->get()->result();
     }
+    
+    public function get_data_login($login) {
+        $this->db
+                ->select('id,nome,login,CPF,status')
+                ->from('many_colaborador')
+                ->where('login',$login)
+                ->order_by('nome', 'ASC');
+
+        return $this->db->get()->result();
+    }
 
     public function get_data_only($id) {
         $this->db
