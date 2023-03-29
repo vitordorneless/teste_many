@@ -1,6 +1,16 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
- */
+$(function () {
+
+    $("#dt_end_colaborador").DataTable({
+        "autoWidth": true,
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": BASE_URL + "enderecoColaborador/listagem",
+            "type": "POST"
+        }
+    });
+
+});
+
 
 
